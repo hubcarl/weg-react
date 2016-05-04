@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test</title>
+  <script type="text/javascript" src="/public/lib/mod.js"></script>
+</head>
+<body>
+    <div id="content"></div>
+    <script type="text/x-jsx">
+        import React, { Component } from 'react'
+        import { render } from 'react-dom'
+
+        // tutorial1.js
+        class CommentBox extends Component {
+          render() {
+            return (
+              <div className="commentBox">
+                Hello, world! I am a CommentBox.
+              </div>
+            )
+          }
+        }
+
+        render(
+          <CommentBox />,
+          document.getElementById('content')
+        )
+    </script>
+</body>
+</html>

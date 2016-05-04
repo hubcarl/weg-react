@@ -1,0 +1,14 @@
+{
+    "name": "react-router",
+    "description": "A complete routing library for React.js",
+    "repos": "https://github.com/rackt/react-router.git",
+    "main": "lib/index",
+    "tag": "master",
+    "reposType": "npm",
+    "dependencies": {
+        "history": "^2.0.0",
+        "invariant": "^2.0.0",
+        "warning": "^2.0.0"
+    },
+    "version": "2.0.0"
+}

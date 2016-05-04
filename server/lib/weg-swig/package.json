@@ -1,0 +1,17 @@
+{
+  "name": "weg-swig",
+  "version": "0.0.1",
+  "description": "Extensions of swig for weg",
+  "main": "index.js",
+  "scripts": {},
+  "dependencies": {
+    "swig": "1.4.2"
+  },
+  "keywords": [
+    "pagelet",
+    "quickling",
+    "weg",
+    "swig",
+    "fis"
+  ]
+}
