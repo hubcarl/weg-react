@@ -56,6 +56,5 @@ function renderView(options) {
 
         this.body = yield renderFile(view, data);
 
-        return html;
     }
 }

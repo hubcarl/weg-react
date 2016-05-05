@@ -2,10 +2,15 @@ fis.set('project.ignore', ['*.iml','*.md','component.json','output/**', 'node_mo
 //设置server根目录用于监控server修改,重新启动服务,默认为server
 fis.set('project.serverDir', 'server');
 
-fis.unhook('components'); // fis3 中预设的是 fis-components，这里不需要，所以先关了。
-fis.hook('node_modules'); // 使用 fis3-hook-node_modules 插件。
+//fis.log.level = fis.log.L_INFO;
 
 fis.hook('commonjs',{});
+
+//设置客户端require component组件查找目录
+fis.set('component.dir','client/public/component');
+
+//fis.unhook('components'); // fis3 中预设的是 fis-components，这里不需要，所以先关了。
+//fis.hook('node_modules'); // 使用 fis3-hook-node_modules 插件。
 
 fis.match('/{index,server,app}.js',{
     useMap:false,
@@ -126,3 +131,8 @@ fis.media('dev').match('*.{js,css,png}', {
     useSprite: false,
     optimizer: null
 })
+
+//fis-preprocessor-components 给components 添加短路径功能
+//fis.config.set('settings.preprocessor.components.paths', {
+//    'react-dom': 'client/public/component/react-dom/react-dom.js'
+//});

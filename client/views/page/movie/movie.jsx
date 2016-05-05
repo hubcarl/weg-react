@@ -1,20 +1,11 @@
-var Router = ReactRouter = require('react-router/lib');
-var Route = ReactRouter.Route;
-var RouteHandler = ReactRouter.RouteHandler;
-var Link = ReactRouter.Link;
-var StateMixin = ReactRouter.State;
-var Redirect = ReactRouter.Redirect;
-
 import React, { Component } from 'react'
-
-
+import { render, findDOMNode } from 'react-dom'
+import { browserHistory, Router, Route, IndexRoute, Link } from 'react-router'
 
 /**
  * 图书列表组件
  */
 var Books = React.createClass({
-    mixins: [StateMixin],
-
     render: function() {
 
         var id = this.getParams().id;
@@ -25,7 +16,7 @@ var Books = React.createClass({
                     <li key={2}><Link to="books" params={{id: 2}}>挪威的森林</Link></li>
                     <li key={3}><Link to="books" params={{id: 3}}>从你的全世界走过</Link></li>
                 </ul>
-                <RouteHandler />
+                //<RouteHandler />
             </div>
         );
     }
@@ -48,8 +39,6 @@ var Book = React.createClass({
  * 电影列表组件
  */
 var Movies = React.createClass({
-
-    mixins: [StateMixin],
 
     render: function() {
         var id = this.getParams().id;
@@ -104,15 +93,11 @@ var App = React.createClass({
 
 // 定义页面上的路由
 var routes = (
-    <Route handler={App}>
-        <Route name="movies" path="/movies/:id?" handler={Movies} />
-        <Route name="books" path="/books/:id?" handler={Books} />
+    <Route component={App}>
+        <Route name="movies" path="/movies/:id?" component={Movies} />
+        <Route name="books" path="/books/:id?" component={Books} />
     </Route>
 );
 
-
-// 将匹配的路由渲染到 DOM 中
-Router.run(routes, Router.HashLocation, function(Root){
-    React.render(<Root />, document.body);
-});
+render(routes, document.body);
 

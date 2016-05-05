@@ -5,13 +5,13 @@
  * Copyright (c) 2016 sky All Rights Reserved
  */
 define('react', function(require, exports, module) {
-    module.exports = require('../js/react/react.js');
+    module.exports = require('../component/react/react.js');
 });
 
 define('react-dom', function(require, exports, module) {
-    module.exports = require('../js/react/react-dom.js');
+    module.exports = require('../component/react/react-dom.js');
 });
 
 define('react-bootstrap', function(require, exports, module) {
-    module.exports = require('../js/react-bootstrap/react-bootstrap.js');
+    module.exports = require('../component/react-bootstrap/react-bootstrap.js');
 });

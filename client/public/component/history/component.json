@@ -1,0 +1,15 @@
+{
+    "name": "history",
+    "description": "Manage browser history with JavaScript",
+    "repos": "https://github.com/mjackson/history.git",
+    "main": "lib/index",
+    "tag": "master",
+    "reposType": "npm",
+    "dependencies": {
+        "deep-equal": "^1.0.0",
+        "invariant": "^2.0.0",
+        "query-string": "^3.0.0",
+        "warning": "^2.0.0"
+    },
+    "version": "2.0.2"
+}
