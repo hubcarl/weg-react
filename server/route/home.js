@@ -5,11 +5,13 @@
  * Copyright (c) 2016 sky All Rights Reserved
  */
 var router = require('koa-router')();
-var React = require('react')
 
 router.get('/', function* () {
-   yield this.renderView('page/home/home.html');
-    //this.body = "welcome koa";
+
+   var reactHtml = yield this.renderComponent('hello',{name: "John"});
+   console.log('reactHtml', reactHtml);
+   yield this.renderView('page/home/home.html',{reactHtml: reactHtml});
+
 });
 
 router.get('/movie', function* () {
@@ -30,7 +32,7 @@ router.get('/single', function* () {
 });
 
 router.get('/react', function* () {
-   yield this.renderReactComponent('hello',{name: "John"});
+   yield this.renderReact('hello',{name: "John"});
 });
 
 module.exports=router;

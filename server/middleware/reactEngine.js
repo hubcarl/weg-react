@@ -8,7 +8,7 @@ var ReactDOM = require('react-dom/server')
 
 module.exports = function (options, app) {
 
-    app.context.renderReactComponent = render(options);
+    app.context.renderReact = renderReact(options);
 
     return function *(next) {
         yield* next;
@@ -16,8 +16,8 @@ module.exports = function (options, app) {
 
 };
 
-function render(options) {
-    return function *render(name, data) {
+function renderReact(options) {
+    return function *renderReact(name, data) {
         var filePath = path.join(options.root, 'client/views/component', name, name+'.js');
         var component = require(filePath);
         var componentFactory = React.createFactory(component)(data);

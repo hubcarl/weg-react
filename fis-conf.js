@@ -4,7 +4,9 @@ fis.set('project.serverDir', 'server');
 
 //fis.log.level = fis.log.L_INFO;
 
-fis.hook('commonjs',{});
+fis.hook('commonjs',{
+    
+});
 
 //设置客户端require component组件查找目录
 fis.set('component.dir','client/public/component');
@@ -45,6 +47,7 @@ fis.match('/client/views/component/(**){.jsx,:jsx}', {
     }),
     rExt: '.js',
     isMod:false,
+    wrap: false,
     release: '/client/views/component/$1'
 });
 
@@ -123,7 +126,7 @@ fis.match('/client/public/lib/(**).js', {
 
 
 fis.match('::package', {
-    postpackager: fis.plugin('loader')
+    postpackager: fis.plugin('loader',{allInOne: false})
 });
 
 fis.media('dev').match('*.{js,css,png}', {

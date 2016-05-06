@@ -1,6 +1,8 @@
 var path = require('path');
 var swig = require('../lib/weg-swig');
 var merge = require('merge');
+var React = require('react')
+var ReactDOM = require('react-dom/server')
 
 module.exports = function (options, app) {
 
@@ -10,6 +12,7 @@ module.exports = function (options, app) {
 
     app.context.render = render(options);
     app.context.renderView = renderView(options);
+    app.context.renderComponent = renderComponent(options);
 
     return function *swigMiddleware(next) {
         var pagelets = this.query['_pagelets'];
@@ -23,14 +26,25 @@ module.exports = function (options, app) {
     };
 };
 
+
+function renderComponent(options) {
+    return function *renderComponent(name, data) {
+        var filePath = path.join(options.root, 'component', name, name+'.js');
+        console.log('--renderComponent filePath', filePath);
+        var component = require(filePath);
+        var componentFactory = React.createFactory(component)(data);
+        return ReactDOM.renderToString(componentFactory);
+    }
+}
+
+
 function render(options) {
     return function *render(page, locals) {
         var layout = locals.layout || options.layout;
         var filename = path.join(options.root, page.replace(/\//g, '_').replace(/\.tpl$/, '') + '.html');
         var source = `{% extends 'layout/${layout}.html' %} {% block content %} {% require $id='page/${page}' %} {% endblock %}`;
         var compiled = swig.compile(source, {filename: filename});
-        var html = compiled(locals);
-        return html;
+        return compiled(locals);
     }
 }
 
