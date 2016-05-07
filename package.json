@@ -8,7 +8,8 @@
   },
   "main": "server/app",
   "scripts": {
-    "start": "node --harmony server/app.js"
+    "start": "weg release && weg server start",
+    "test": "weg release && weg server clean"
   },
   "dependencies": {
     "caller": "0.0.1",

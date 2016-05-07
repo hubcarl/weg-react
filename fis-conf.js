@@ -1,8 +1,15 @@
-fis.set('project.ignore', ['*.iml','*.md','component.json','output/**', 'node_modules/**', '.git/**', '.svn/**']);
-//设置server根目录用于监控server修改,重新启动服务,默认为server
-fis.set('project.serverDir', 'server');
+//var path = require('path');
+//var project = fis.project.getProjectPath().split('/').pop();
+//fis.project.setTempRoot(path.join(fis.project.getTempPath(),project));
 
-//fis.log.level = fis.log.L_INFO;
+fis.project.init();
+
+fis.set('project.ignore', ['*.iml','*.md','component.json','output/**', 'node_modules/**', '.git/**', '.svn/**']);
+
+//设置node启动入口
+fis.set('server.entry', 'app.js');
+
+fis.log.level = fis.log.L_INFO;
 
 fis.hook('commonjs',{
     
@@ -10,6 +17,12 @@ fis.hook('commonjs',{
 
 //设置客户端require component组件查找目录
 fis.set('component.dir','client/public/component');
+
+//fis.on('compile:end', function(file){
+//    if(file.realpath.indexOf('hello')>-1){
+//        console.log(file);
+//    }
+//});
 
 //fis.unhook('components'); // fis3 中预设的是 fis-components，这里不需要，所以先关了。
 //fis.hook('node_modules'); // 使用 fis3-hook-node_modules 插件。
@@ -47,7 +60,7 @@ fis.match('/client/views/component/(**){.jsx,:jsx}', {
     }),
     rExt: '.js',
     isMod:false,
-    wrap: false,
+    isJsLike:false,
     release: '/client/views/component/$1'
 });
 
