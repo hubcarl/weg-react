@@ -9,7 +9,7 @@ define('react', function(require, exports, module) {
 });
 
 define('react-dom', function(require, exports, module) {
-    module.exports = require('../component/react/react-dom.js');
+    module.exports = require('../component/react-dom/react-dom.js');
 });
 
 define('react-bootstrap', function(require, exports, module) {

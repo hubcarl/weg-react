@@ -1,6 +1,6 @@
+
 var React = require('react');
-var ReactDOM = require('react-dom/server');
-var isNode = typeof module !== 'undefined' && module.exports;
+var ReactDOM = require('react-dom');
 
 var HelloMessage = React.createClass({
     handleClick: function () {
@@ -11,9 +11,9 @@ var HelloMessage = React.createClass({
         return <div onClick={this.handleClick}>Hello {this.props.name}</div>
     }
 })
-
-if (isNode) {
+if(typeof module != 'undefined'){
     module.exports = HelloMessage;
-} else {
-    ReactDOM.render(<HelloMessage name="John" />, document.getElementById('react-root'))
+}else{
+    ReactDOM.render(<HelloMessage name="John" />, document.getElementById('hello'))
 }
+

@@ -51,9 +51,8 @@ fis.match('/{client/public,client/views}/(**){.jsx,:jsx}', {
     release: '/client/public/$1'
 });
 
-
 //// 编译所有后缀为 jsx 的文件为 js
-fis.match('/client/views/component/(**){.jsx,:jsx}', {
+fis.match('/client/component/(**){.jsx,:jsx}', {
     useCompile: true,
     parser: fis.plugin('babel-5.x', {
         sourceMaps: false
@@ -61,16 +60,7 @@ fis.match('/client/views/component/(**){.jsx,:jsx}', {
     rExt: '.js',
     isMod:false,
     isJsLike:false,
-    release: '/client/views/component/$1'
-});
-
-
-fis.match('/components/(**).js', {
-    isMod:true,
-    useMap:true,
-    optimizer: fis.plugin('uglify-js'),
-    url:'/public/components/$1',
-    release: '/client/public/components/$1'
+    release: '/client/component/$1'
 });
 
 fis.match('/client/views/(**).tpl', {
@@ -149,6 +139,7 @@ fis.media('dev').match('*.{js,css,png}', {
 })
 
 //fis-preprocessor-components 给components 添加短路径功能
-//fis.config.set('settings.preprocessor.components.paths', {
-//    'react-dom': 'client/public/component/react-dom/react-dom.js'
-//});
+fis.config.set('settings.preprocessor.components.paths', {
+    'react': 'client/public/component/react/react.js',
+    'react-dom': 'client/public/component/react-dom/react-dom.js'
+});

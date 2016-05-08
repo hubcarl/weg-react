@@ -22,6 +22,7 @@ app.use(logger());
 app.use(parser());
 app.use(sstatic(path.join(root, 'client')));
 app.use(swigEngine({
+    www:root,
     root: root + '/client/views',
     ext: 'html',
     weg: {
@@ -30,7 +31,7 @@ app.use(swigEngine({
         logger: console
     },
     swig: {
-        cache:'memory',
+        cache:false, //'memory'
         filters: []
     }
 },app));

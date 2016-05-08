@@ -29,7 +29,7 @@ module.exports = function (options, app) {
 
 function renderComponent(options) {
     return function *renderComponent(name, data) {
-        var filePath = path.join(options.root, 'component', name, name+'.js');
+        var filePath = path.join(options.www, 'client/component', name, name+'.js');
         console.log('--renderComponent filePath', filePath);
         var component = require(filePath);
         var componentFactory = React.createFactory(component)(data);

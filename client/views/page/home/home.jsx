@@ -1,3 +1,3 @@
-require('../../widget/comment/comment.jsx');
-require('../../widget/dialog/dialog.jsx');
-require('../../widget/panel/panel.jsx');
+require('../../widget/comment');
+require('../../widget/dialog');
+require('../../widget/panel');
