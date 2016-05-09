@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>React</title>
-    <link href="/public/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <script src="/public/lib/mod.js" type="text/javascript"></script>
-    <script src="/component/hello/hello.js" type="text/javascript"></script>
-    <script src="./home.jsx" type="text/javascript"></script>
-</head>
-<body>
+
 <div class="container">
     <div id="hello">{% autoescape %}{{reactHtml}}{% endautoescape %}</div>
 
@@ -24,8 +15,6 @@
     </div>
 
 </div>
-<script>
+{% script %}
     require('./home.jsx');
-</script>
-</body>
-</html>
+{% endscript %}

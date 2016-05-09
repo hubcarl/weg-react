@@ -73,6 +73,10 @@ var require, define;
         });
     }
 
+    function getComponentId(id){
+        return (require.componentDir||"client/public/component")+"/" + id + "/" + id;
+    }
+
     define = function(id, factory) {
         id = id.replace(/\.js$/i, '');
         factoryMap[id] = factory;
@@ -95,7 +99,7 @@ var require, define;
 
         id = require.alias(id);
 
-        var mod = modulesMap[id];
+        var mod = modulesMap[id]||modulesMap[getComponentId(id)];
         if (mod) {
             return mod.exports;
         }
@@ -103,8 +107,9 @@ var require, define;
         //
         // init module
         //
-        var factory = factoryMap[id];
+        var factory = factoryMap[id]||factoryMap[getComponentId(id)];
         if (!factory) {
+
             throw '[ModJS] Cannot find module `' + id + '`';
         }
 
@@ -220,14 +225,13 @@ var require, define;
         }
     };
 
-
     require.alias = function(id) {
         return id.replace(/\.js$/i, '');
     };
 
     require.print = function(){
-        console.log('resMap', JSON.stringify(resMap));
-        console.log('pkgMap', JSON.stringify(pkgMap));
+        console.log('factoryMap', factoryMap);
+        console.log('modulesMap', modulesMap);
 
     }
 

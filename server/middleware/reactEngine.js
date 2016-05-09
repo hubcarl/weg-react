@@ -18,7 +18,7 @@ module.exports = function (options, app) {
 
 function renderReact(options) {
     return function *renderReact(name, data) {
-        var filePath = path.join(options.root, 'client/views/component', name, name+'.js');
+        var filePath = path.join(options.root, 'client/component', name, name+'.js');
         var component = require(filePath);
         var componentFactory = React.createFactory(component)(data);
         this.body = ReactDOM.renderToString(componentFactory);

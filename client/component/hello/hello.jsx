@@ -1,4 +1,3 @@
-
 var React = require('react');
 var ReactDOM = require('react-dom');
 
@@ -7,13 +6,12 @@ var HelloMessage = React.createClass({
         alert('You clicked!')
     },
 
-    render: function() {
+    render: function () {
         return <div onClick={this.handleClick}>Hello {this.props.name}</div>
     }
 })
-if(typeof module != 'undefined'){
+if (typeof define == 'function') {
+    ReactDOM.render(<HelloMessage name="John"/>, document.getElementById('hello'))
+} else {
     module.exports = HelloMessage;
-}else{
-    ReactDOM.render(<HelloMessage name="John" />, document.getElementById('hello'))
 }
-

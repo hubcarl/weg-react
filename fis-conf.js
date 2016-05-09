@@ -11,9 +11,7 @@ fis.set('server.entry', 'app.js');
 
 fis.log.level = fis.log.L_INFO;
 
-fis.hook('commonjs',{
-    
-});
+fis.hook('commonjs',{});
 
 //设置客户端require component组件查找目录
 fis.set('component.dir','client/public/component');
@@ -47,25 +45,28 @@ fis.match('/{client/public,client/views}/(**){.jsx,:jsx}', {
     rExt: '.js',
     isMod:true,
     useMap:true,
+    useCache:false,
     url:'/public/$1',
     release: '/client/public/$1'
 });
 
 //// 编译所有后缀为 jsx 的文件为 js
 fis.match('/client/component/(**){.jsx,:jsx}', {
-    useCompile: true,
     parser: fis.plugin('babel-5.x', {
         sourceMaps: false
     }),
     rExt: '.js',
-    isMod:false,
-    isJsLike:false,
+    isMod:true,
+    useMap:true,
+    useCache:false,
+    useCompile: true,
+    url:'/component/$1',
     release: '/client/component/$1'
 });
 
-fis.match('/client/views/(**).tpl', {
+fis.match('/client/views/(**).html', {
     useMap:true,
-    url: '/$1',
+    useMap:true,
     //preprocessor: fis.plugin('require')
     preprocessor: fis.plugin('extlang')
 });
@@ -139,7 +140,7 @@ fis.media('dev').match('*.{js,css,png}', {
 })
 
 //fis-preprocessor-components 给components 添加短路径功能
-fis.config.set('settings.preprocessor.components.paths', {
-    'react': 'client/public/component/react/react.js',
-    'react-dom': 'client/public/component/react-dom/react-dom.js'
-});
+//fis.config.set('settings.preprocessor.components.paths', {
+//    'react': 'client/public/component/react/react.js',
+//    'react-dom': 'client/public/component/react-dom/react-dom.js'
+//});

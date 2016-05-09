@@ -13,3 +13,8 @@ npm install -g weg
 ```
 npm install -g fis3-hook-node_modules
 ```
+
+## 参考第三方组件
+
+ - scrat-swig
+ - pagelet

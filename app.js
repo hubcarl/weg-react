@@ -22,14 +22,12 @@ app.use(logger());
 app.use(parser());
 app.use(sstatic(path.join(root, 'client')));
 app.use(swigEngine({
-    www:root,
-    root: root + '/client/views',
+    root:root,
+    view: root + '/client/views',
     ext: 'html',
-    weg: {
-        map: root + '/client/map.json',
-        cacheMap: false,
-        logger: console
-    },
+    map: root + '/client/map.json',
+    cacheMap: false,
+    logger: console,
     swig: {
         cache:false, //'memory'
         filters: []

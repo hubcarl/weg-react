@@ -8,7 +8,7 @@ module.exports = function (options, app) {
 
     options = merge({ext: 'html', layout: 'layout'}, options);
 
-    swig.middleware(options.weg);
+    swig.middleware(options);
 
     app.context.render = render(options);
     app.context.renderView = renderView(options);
@@ -29,7 +29,7 @@ module.exports = function (options, app) {
 
 function renderComponent(options) {
     return function *renderComponent(name, data) {
-        var filePath = path.join(options.www, 'client/component', name, name+'.js');
+        var filePath = path.join(options.root, 'client/component', name, name+'.js');
         console.log('--renderComponent filePath', filePath);
         var component = require(filePath);
         var componentFactory = React.createFactory(component)(data);
@@ -41,10 +41,10 @@ function renderComponent(options) {
 function render(options) {
     return function *render(page, locals) {
         var layout = locals.layout || options.layout;
-        var filename = path.join(options.root, page.replace(/\//g, '_').replace(/\.tpl$/, '') + '.html');
-        var source = `{% extends 'layout/${layout}.html' %} {% block content %} {% require $id='page/${page}' %} {% endblock %}`;
-        var compiled = swig.compile(source, {filename: filename});
-        return compiled(locals);
+        var fakePath = path.join(options.view, page.replace(/\//g, '_').replace(/\.html$/, '') + '.html');
+        var source = `{% extends 'layout/${layout}.html' %} {% block content %} {% require $id='/page/${page}' %} {% endblock %}`;
+        var compiled = swig.compile(source, {filename: fakePath});
+        this.body = compiled(locals);
     }
 }
 

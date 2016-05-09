@@ -8,9 +8,9 @@ var router = require('koa-router')();
 
 router.get('/', function* () {
 
-   var reactHtml = yield this.renderComponent('hello',{name: "John"});
+   var reactHtml =yield this.renderComponent('hello',{name: "John"});
    console.log('reactHtml', reactHtml);
-   yield this.renderView('page/home/home.html',{reactHtml: reactHtml});
+   yield this.render('home',{reactHtml: reactHtml});
 
 });
 
