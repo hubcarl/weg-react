@@ -74,7 +74,11 @@ var require, define;
     }
 
     function getComponentId(id){
-        return (require.componentDir||"client/public/component")+"/" + id + "/" + id;
+        if(id.indexOf('.')>-1){
+            return id;
+        }else{
+            return (require.componentDir||"client/public/component")+"/" + id + "/" + id;
+        }
     }
 
     define = function(id, factory) {

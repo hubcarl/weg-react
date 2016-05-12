@@ -60,14 +60,13 @@ fis.match('/client/component/(**){.jsx,:jsx}', {
     useMap:true,
     useCache:false,
     useCompile: true,
+    useRequireReplace:false,
     url:'/component/$1',
     release: '/client/component/$1'
 });
 
 fis.match('/client/views/(**).html', {
     useMap:true,
-    useMap:true,
-    //preprocessor: fis.plugin('require')
     preprocessor: fis.plugin('extlang')
 });
 
