@@ -64,7 +64,7 @@ function renderView(options) {
             view += ext;
         }
 
-        view = path.resolve(options.root, view);
+        view = path.resolve(options.view, view);
 
         var data = merge(this.state, {flash: this.flash}, locals);
 

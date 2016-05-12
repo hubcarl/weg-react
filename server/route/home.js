@@ -5,13 +5,19 @@
  * Copyright (c) 2016 sky All Rights Reserved
  */
 var router = require('koa-router')();
+var article = require('../model/article');
 
 router.get('/', function* () {
 
    var reactHtml =yield this.renderComponent('hello',{name: "John"});
-   console.log('reactHtml', reactHtml);
    yield this.render('home',{reactHtml: reactHtml});
 
+});
+
+router.get('/article', function* () {
+   var list = yield article.query(1,20);
+   this.logger.debug('list size:', list.length);
+   yield this.render('article', {list:list});
 });
 
 router.get('/movie', function* () {
