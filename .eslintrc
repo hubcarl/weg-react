@@ -1,0 +1,15 @@
+//0：关闭该条规则。
+//1：违反这条规则，会抛出一个警告。
+//2：违反这条规则，会抛出一个错误。
+{
+  "extends": "eslint-config-airbnb",
+  "rules": {
+    "indent": 2,
+    "no-unused-vars": 2,
+    "no-alert": 1
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  }
+}

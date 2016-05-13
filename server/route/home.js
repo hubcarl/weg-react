@@ -22,19 +22,16 @@ router.get('/article', function* () {
 
 router.get('/movie', function* () {
    yield this.renderView('page/movie/movie.html');
-   //this.body = "welcome koa";
 });
 
 
 router.get('/sidebar', function* () {
    yield this.renderView('page/sidebar/sidebar.html');
-   //this.body = "welcome koa";
 });
 
 
 router.get('/single', function* () {
    yield this.renderView('page/single/single.html');
-   //this.body = "welcome koa";
 });
 
 router.get('/react', function* () {

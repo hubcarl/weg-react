@@ -10,18 +10,36 @@
 var router = require('koa-router')();
 var article = require('../model/article');
 
-//class Point1 {
-//    constructor(x, y) {
-//        this.x = x;
-//        this.y = y;
-//    }
-//}
-//
-//class Point2 {
-//    constructor(x, y) {
-//        Object.assign(this, {x, y});
-//    }
-//}
+// 6.1.0 support
+class Point1 {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+
+class Point2 {
+    constructor(x, y) {
+        Object.assign(this, {x, y});
+    }
+}
+
+class Queue {
+    constructor(contents = []) {
+        this._queue = [...contents];
+    }
+    pop() {
+        const value = this._queue[0];
+        this._queue.splice(0, 1);
+        return value;
+    }
+}
+
+class PeekableQueue extends Queue {
+    peek() {
+        return this._queue[0];
+    }
+}
 
 
 router.get('/es6', function* () {
@@ -66,20 +84,16 @@ router.get('/es6', function* () {
 
     Array.from([1,2,3], x => x * x);
     Array.from([1,2,3]).map(x => x * x);
-    Array.of(3, 11, 8) // [3,11,8]
+    Array.of(3, 11, 8); // [3,11,8]
 
     for (let index of ['a', 'b'].keys()) {
         console.log(index);
     }
 
-    for (let elem of ['a', 'b'].values()) {
-        console.log(elem);
-    }
-
-
-    for (let [index, elem] of ['a', 'b'].entries()) {
-        console.log(index, elem);
-    }
+    // 不支持
+    //for (let elem of ['a', 'b'].values()) {
+    //    console.log(elem);
+    //}
 
     [1, 2, 3].includes(2);     // true
     [1, 2, 3].includes(4);     // false
@@ -99,11 +113,19 @@ router.get('/es6', function* () {
     s.endsWith('Hello', 5) // true
     s.includes('Hello', 6) // false
 
-    //在 ECMAScript 6 中， {x, y} 是 {x: x, y: y} 的一种缩写形式。
+    function concatenateAll(...args) {
+        console.log(args.toString());
+    }
+
+    concatenateAll(1,2,3,4,5,6);
+
+
+        //在 ECMAScript 6 中， {x, y} 是 {x: x, y: y} 的一种缩写形式。
     yield this.render('es6',{title:'es6学习', data:{
         source1,source2,target1,target2, copy1, copy2
     }});
 
 });
 
+//export default router;
 module.exports=router;
