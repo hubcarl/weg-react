@@ -204,7 +204,7 @@ Resource.prototype.include = function (file, ctx, swig) {
     var got = false;
     if (file.indexOf('.') === -1) {
         file = this.normalize(file, '.html');
-        console.log('include file:', file);
+        //console.log('include file:', file);
         var res = this.getResById(file);
         if (res) {
             got = true;

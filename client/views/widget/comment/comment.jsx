@@ -6,6 +6,8 @@ var data = [
     {author: "Jordan Walke", text: "This is *another* comment"}
 ];
 
+
+
 // 创建React组件
 var CommentBox = React.createClass({
     // 在组件的生命周期中仅执行一次，用于设置初始状态
@@ -22,6 +24,7 @@ var CommentBox = React.createClass({
             self.setState({data: data});
         }, 500);
     },
+
     // 当组件render完成后自动被调用
     componentDidMount: function() {
         var self = this;

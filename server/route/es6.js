@@ -62,6 +62,7 @@ router.get('/es6', function* () {
     [source1, source2].reduce(Object.assign, target2);
 
     const copy1 = Object.assign({__proto__: source1.__proto__}, source1);
+
     const copy2 = Object.assign({}, source1);
 
     //Proxy可以理解成，在目标对象之前架设一层“拦截”，外界对该对象的访问，都必须先通过这层拦截，因此提供了一种机制，可以对外界的访问进行过滤和改写
@@ -113,19 +114,20 @@ router.get('/es6', function* () {
     s.endsWith('Hello', 5) // true
     s.includes('Hello', 6) // false
 
+
     function concatenateAll(...args) {
         console.log(args.toString());
     }
 
     concatenateAll(1,2,3,4,5,6);
 
-
         //在 ECMAScript 6 中， {x, y} 是 {x: x, y: y} 的一种缩写形式。
-    yield this.render('es6',{title:'es6学习', data:{
+    yield this.render('es6',{title:'ES6学习', data:{
         source1,source2,target1,target2, copy1, copy2
     }});
 
 });
+
 
 //export default router;
 module.exports=router;

@@ -65,11 +65,12 @@ fis.match('/client/component/(**){.jsx,:jsx}', {
     release: '/client/component/$1'
 });
 
+
+
 fis.match('/client/views/(**).html', {
     useMap:true,
     preprocessor: fis.plugin('extlang')
 });
-
 
 fis.match('/client/**.{js,css,png,jpg,gif}', {
     useHash:true

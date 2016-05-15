@@ -16,7 +16,7 @@ module.exports = function (app, config) {
             if(fs.statSync(filePath).isDirectory()){
                 walk(filePath);
             }else{
-                console.info('filePath:' + filePath);
+                //console.info('filePath:' + filePath);
                 app.use(require(filePath).routes());
             }
         });

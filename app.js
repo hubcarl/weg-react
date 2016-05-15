@@ -46,5 +46,5 @@ const args = process.argv.join('|');
 const port = /\-\-port\|(\d+)(?:\||$)/.test(args) ? ~~RegExp.$1 : 9999;
 
 app.listen(port, function () {
-  console.log('Express server listening on port ' + port);
+  console.log('server listening on port ' + port);
 });
