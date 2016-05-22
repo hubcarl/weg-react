@@ -12,11 +12,13 @@ const koaLogger = require('koa-logger');
 const path = require('path');
 const swigEngine = require('./server/middleware/swigEngine');
 const reactEngine = require('./server/middleware/reactEngine');
-const router = require('./server/middleware/router');
+//const router = require('./server/middleware/router');
+const routerMapping = require('./server/middleware/routerMapping');
 const logger = require('./server/utils/log4js').configure(root);
-
+const xml = require('./server/utils/xml');
+const co = require('co');
 const app = koa();
-app.context.logger = logger.getLogger('debug');
+app.logger = app.context.logger = logger.getLogger('debug');
 
 app.use(koaLogger());
 app.use(parser());
@@ -35,8 +37,7 @@ app.use(swigEngine({
 }, app));
 
 app.use(reactEngine({ root }, app));
-app.use(router(app, { root }));
-
+app.use(routerMapping(app, { root }));
 app.on('error', error => {
   console.error(error);
 });
@@ -46,5 +47,5 @@ const args = process.argv.join('|');
 const port = /\-\-port\|(\d+)(?:\||$)/.test(args) ? ~~RegExp.$1 : 9999;
 
 app.listen(port, function () {
-  console.log('server listening on port ' + port);
+  console.log('The server is runing on port:' + port );
 });

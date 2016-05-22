@@ -28,12 +28,14 @@ fis.set('component.dir','client/public/component');
 fis.match('/{index,server,app}.js',{
     useMap:false,
     useHash: false,
+    useCache:false,
     useCompile: false
 });
 
 fis.match('/server/**.**',{
     useMap:false,
     useHash: false,
+    useCache:false,
     useCompile: false
 });
 
