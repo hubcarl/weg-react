@@ -8,3 +8,4 @@ pids
 *.seed
 *.iml
 node_modules
+/client/public/test
