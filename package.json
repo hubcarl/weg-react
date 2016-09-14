@@ -32,6 +32,7 @@
     "koa-static": "1.5.1",
     "koa-useragent": "0.1.1",
     "koa-validate": "0.2.11",
+    "ready-callback":"1.0.0",
     "lodash": "3.10.1",
     "log4js": "0.6.27",
     "merge": "1.2.0",

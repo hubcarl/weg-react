@@ -4,14 +4,18 @@
         <Route path="/article" method="article"/>
         <Route path="/react" method="react"/>
     </Routes>
-    <Routes router="server/router/es6.js" prefix="/es6" type="get">
+    <Routes router="server/router/es6.js" prefix="/es6" type="get" use="false">
     </Routes>
     <Routes router="server/router/home.js" prefix="/home" type="get">
-        <Route path="/" method="init"/>
+        <Route path="/init" method="init"/>
         <Route path="/list" method="list"/>
         <Route path="/movie" method="movie"/>
         <Route path="/sidebar" method="sidebar"/>
         <Route path="/single" method="single"/>
         <Route path="/react" method="react"/>
+    </Routes>
+    <Routes router="server/router/server.js">
+        <Route path="/" method="hello"/>
+        <Route path="/pager" method="pager"/>
     </Routes>
 </RootRoutes>

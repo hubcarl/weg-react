@@ -2,12 +2,15 @@
  * Created by sky on 16/4/10.
  * 路由注册
  */
+'use strict'
 const fs = require("fs");
 const path = require("path");
 const xml = require('../utils/xml');
 const koaRouter = require('koa-router')();
 
 module.exports = function (app, config) {
+
+  const routerReadyDone = app.readyCallback('router');
 
   xml.read(config).then(data=> {
 
@@ -23,7 +26,6 @@ module.exports = function (app, config) {
       if (!routes.Route) routes.Route = [{ '$': {} }];
 
       routes.Route.forEach(route=> {
-
         const type = route.$.type || routes.$.type || 'get';
         const url = path.join(routes.$.prefix || '', route.$.path || '');
         const method = route.$.method;
@@ -34,20 +36,15 @@ module.exports = function (app, config) {
           koaRouter[type].apply(koaRouter, [url, router]);
         }
       });
-
     });
 
     app.use(koaRouter.routes())
 
+    routerReadyDone();
   });
-
-  //const xmlRead = async () =>{
-  //  xmlContent = await xml.read(config);
-  //};
-  //xmlRead();
-
 
   return function *(next) {
     yield next;
   };
+
 };

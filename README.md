@@ -37,4 +37,7 @@ npm install -g fis3-hook-node_modules
 
  - scrat-swig
  - pagelet
- 
+
+## 服务端渲染与状态共享
+
+http://itbilu.com/javascript/react/N1s80lRsg.html

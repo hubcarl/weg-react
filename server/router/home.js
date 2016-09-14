@@ -11,6 +11,7 @@ var article = require('../model/article');
 exports.init = function* () {
 
   var reactHtml = yield this.renderComponent('hello', { name: "John" });
+  this.app.logger.debug(reactHtml);
   yield this.render('home', { reactHtml: reactHtml });
 
 }

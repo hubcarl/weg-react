@@ -77,7 +77,7 @@ var require, define;
         if(id.indexOf('.')>-1){
             return id;
         }else{
-            return (require.componentDir||"client/public/component")+"/" + id + "/" + id;
+            return (require.componentDir||"client/public/vendor")+"/" + id + "/" + id;
         }
     }
 

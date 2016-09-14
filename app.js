@@ -4,12 +4,14 @@
  * Created by sky on 16/4/24
  * Copyright (c) 2016 sky All Rights Reserved
  */
+'use strict'
+
+const path = require('path');
 const root = __dirname;
 const koa = require('koa');
 const sstatic = require('koa-static');
 const parser = require('koa-bodyparser');
 const koaLogger = require('koa-logger');
-const path = require('path');
 const swigEngine = require('./server/middleware/swigEngine');
 const reactEngine = require('./server/middleware/reactEngine');
 //const router = require('./server/middleware/router');
@@ -18,6 +20,10 @@ const logger = require('./server/utils/log4js').configure(root);
 const xml = require('./server/utils/xml');
 const co = require('co');
 const app = koa();
+//https://github.com/node-modules/ready-callback
+const ready = require('ready-callback')();
+ready.mixin(app);
+
 app.logger = app.context.logger = logger.getLogger('debug');
 
 app.use(koaLogger());
@@ -39,13 +45,14 @@ app.use(swigEngine({
 app.use(reactEngine({ root }, app));
 app.use(routerMapping(app, { root }));
 app.on('error', error => {
-  console.error(error);
+  app.logger.error(error);
 });
 
-
-const args = process.argv.join('|');
-const port = /\-\-port\|(\d+)(?:\||$)/.test(args) ? ~~RegExp.$1 : 9999;
-
-app.listen(port, function () {
-  console.log('The server is runing on port:' + port );
+app.ready(function(){
+  const args = process.argv.join('|');
+  const port = /\-\-port\|(\d+)(?:\||$)/.test(args) ? ~~RegExp.$1 : 9999;
+  app.listen(port, function () {
+    app.logger.info('The server is runing on port:' + port);
+  });
 });
+

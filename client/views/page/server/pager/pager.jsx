@@ -1,0 +1,1 @@
+require('client/views/widget/pager');
