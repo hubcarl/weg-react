@@ -13,7 +13,7 @@ exports.hello = function* () {
 }
 
 exports.pager = function* () {
-  const reactHtml = yield this.renderComponent('pager', {});
+  const reactHtml = '';//yield this.renderComponent('pager', {});
   this.app.logger.debug(reactHtml);
   yield this.render('server/pager', { reactHtml: reactHtml });
 }
