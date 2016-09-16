@@ -10,30 +10,30 @@ const koaRouter = require('koa-router')();
 
 module.exports = function (app, config) {
 
-  const routerReadyDone = app.readyCallback('router');
+  const routerReadyDone = app.readyCallback('requireRouter');
 
   xml.read(config).then(data=> {
 
-    const rootRoutes = data.RootRoutes;
+    const rootRouter = data.RootRouter;
 
-    rootRoutes.Routes.forEach(routes => {
+    rootRouter.Router.forEach(router => {
 
-      if (routes.$.use === 'false') return;
+      if (router.$.use === 'false') return;
 
-      const routerPath = path.join(config.root, routes.$.router);
-      const router = require(routerPath);
+      const routerPath = path.join(config.root, router.$.path);
+      const requireRouter = require(routerPath);
 
-      if (!routes.Route) routes.Route = [{ '$': {} }];
+      if (!router.Route) router.Route = [{ '$': {} }];
 
-      routes.Route.forEach(route=> {
-        const type = route.$.type || routes.$.type || 'get';
-        const url = path.join(routes.$.prefix || '', route.$.path || '');
+      router.Route.forEach(route=> {
+        const type = route.$.type || router.$.type || 'get';
+        const url = path.join(router.$.prefix || '', route.$.path || '');
         const method = route.$.method;
-        app.logger.debug('url:%s, router:%s', url, routes.$.router);
+        app.logger.debug('url:%s, requireRouter:%s', url, router.$.path);
         if (method) {
-          koaRouter[type].apply(koaRouter, [url, router[method]]);
+          koaRouter[type].apply(koaRouter, [url, requireRouter[method]]);
         } else {
-          koaRouter[type].apply(koaRouter, [url, router]);
+          koaRouter[type].apply(koaRouter, [url, requireRouter]);
         }
       });
     });

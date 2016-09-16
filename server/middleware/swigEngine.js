@@ -32,7 +32,9 @@ function renderComponent(options) {
         var filePath = path.join(options.root, 'client/public/widget', name, name+'.js');
         //console.log('--renderComponent filePath', filePath);
         var component = require(filePath);
+        // createFactory arguments:string/ReactClass type
         var componentFactory = React.createFactory(component)(data);
+        // renderToString:React.createElement
         return ReactDOM.renderToString(componentFactory);
     }
 }

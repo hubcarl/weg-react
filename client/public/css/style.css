@@ -1,0 +1,282 @@
+
+
+html {
+}
+
+body {
+    color: #666;
+    font-family: "微软雅黑", "宋体", Arial;
+    font-size: 12px;
+    background: #f8f8fa;
+}
+
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+    overflow: hidden;
+}
+.clearfix {
+    zoom: 1;
+}
+
+.header {
+    background:#00A2CA;
+    position:fixed; /* 绝对定位，fixed是相对于浏览器窗口定位。 */
+    top:0; /* 距离窗口顶部距离 */
+    left:0; /* 距离窗口左边的距离 */
+    right: 0;
+    z-index: 1000;
+}
+
+.header_content {
+    width: 80%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.header .logo {
+    width: 300px;
+    padding-top: 12px;
+    color: white; font-size: 40px;font-weight: 800
+}
+
+.header .left {
+    float: left;
+}
+
+.header .right {
+    float: right;
+    padding-right: 100px;
+}
+
+
+
+
+.codeAdv {
+    color: #00a3e9;
+    text-align: center;
+    font-size: 16px;
+}
+
+.codeAdv .hdtxt {
+    font-size: 20px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.prod {
+    text-align: center;
+    padding-top: 12px
+}
+
+.prod img {
+    width: 60px;
+    height: 60px
+}
+
+.prod p {
+    text-align: center;
+    font-size: 18px;
+    color: white
+}
+
+footer {
+    background: #1d2325;
+    display: block;
+}
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    width: 1000px;
+}
+
+.footer-widget {
+    padding: 35px 0px 0px 0px;
+}
+
+.footer-widget .widget {
+    margin-bottom: 20px;
+}
+
+.row-fluid {
+    width: 100%;
+}
+
+.row-fluid .span3 {
+    display: block;
+    width: 200px;
+    float: left;
+    margin-right: 50px;
+}
+
+.footer-widget h3 {
+    color: #fff;
+    font-size: 17px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    margin-bottom: 27px;
+    border-bottom: 1px solid #010202;
+}
+
+.footer-widget h3 span {
+    display: inline-block;
+    padding-bottom: 15px;
+    border-bottom: 5px solid #02ab68;
+    margin-bottom: -1px;
+}
+
+.footer-widget p {
+    color: #fff;
+    font-size: 13px;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 17px;
+    margin-bottom: 15px;
+}
+
+.footer-widget .widget {
+    margin-bottom: 20px;
+}
+
+.footer-desc{
+    text-align: center;
+    padding-bottom: 8px;
+}
+
+.banner-style {
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    display: none;
+    background: #EEEEEE;
+    /*box-shadow: 4px 4px 4px #888888;*/
+}
+
+.banner-style .pic {
+    text-align: center;
+}
+
+.banner-style .pic img {
+    width: 1180px
+}
+
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    width: 1000px;
+}
+
+.m30 {
+    margin: 30px auto;
+    overflow: hidden;
+}
+
+/*service */
+.service {
+    position: relative;
+}
+.service .hd {
+    overflow: hidden;
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+.service .hd .tit {
+    font-size: 22px;
+    color: #333;
+}
+.service .hd .prev, .service .hd .next {
+    display: block;
+    width: 26px;
+    height: 26px;
+    float: right;
+    margin-left: 5px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.service .hd .next {
+    background-position: -30px 0;
+}
+.service .bd {
+}
+.service .bd ul {
+}
+.service .bd ul li {
+    width: 210px;
+    float: left;
+    margin-right: 53px;
+}
+.service .bd ul li:hover {
+}
+.service .bd ul li .pic {
+    height: 125px;
+}
+.service .bd ul li .pic img {
+    vertical-align: middle;
+    width: 210px;
+    height: 125px;
+}
+.hover:hover {
+    opacity: 0.8;
+}
+.service .bd ul li .txtinfo {
+    height: 5em;
+    overflow: hidden;
+    line-height: 20px;
+    margin: 8px 0 14px 0
+}
+.service .bd ul li .btns {
+    height: 30px;
+}
+.service .bd ul li .btns .btn {
+    display: block;
+    height: 30px;
+    text-align: center;
+    line-height: 28px;
+    font-size: 14px;
+    color: #fff !important;
+    text-decoration: none;
+}
+
+.prod{
+    text-align: center;
+    padding-top: 12px
+}
+.prod img{
+    width: 60px;
+    height: 60px
+}
+.prod p{
+    text-align: center;
+    font-size: 18px;
+    color: white
+}
+
+.s01 {
+    background: #27b362;
+}
+.s02 {
+    background: #3397db;
+}
+.s03 {
+    background: #db552f;
+}
+.s04 {
+    background: #019eaf;
+}
+.s05 {
+    background: #15a21e;
+}
+.s06 {
+    background: #d87a25;
+}
+.s07 {
+    background: #ec6c62;
+}
+.clear{
+    clear: both;
+}

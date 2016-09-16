@@ -53,7 +53,7 @@ fis.match('/{client/public,client/views}/(**){.jsx,:jsx}', {
 });
 
 //编译所有后缀为 jsx 的文件为 js
-fis.match('/client/views/widget/{hello/*,pager/*}{.jsx,:jsx}', {
+fis.match('/client/views/widget/{hello/*,pager/*,menu/*}{.jsx,:jsx}', {
     useRequireReplace:false
 });
 
@@ -77,7 +77,7 @@ fis.match('/client/**.{js,css}', {
 });
 
 // 同名组件依赖
-fis.match('/client/views/**.{tpl,js,css}', {
+fis.match('/client/views/**.{html,js,css}', {
     useSameNameRequire: true
 });
 

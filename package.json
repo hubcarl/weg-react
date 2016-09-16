@@ -56,7 +56,7 @@
     "sinon": "^1.17.1",
     "supertest": "^1.0.1",
     "babel-cli": "^6.0.0",
-    "babel-preset-es2015": "^6.0.0"
+    "babel-preset-es2015": "^6.14.0"
   },
   "engines": {
     "node": "^6.1.0"

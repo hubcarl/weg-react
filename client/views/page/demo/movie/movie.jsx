@@ -99,5 +99,5 @@ var routes = (
     </Route>
 );
 
-render(routes, document.body);
+render(routes, document.getElementById('movie'));
 
