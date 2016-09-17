@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RootRouter>
     <Router path="server/router/demo/dynamic.js" prefix="/dynamic" type="get">
-        <Route path="/article" method="article"/>
         <Route path="/react" method="react"/>
-        <Route path="/list" method="list"/>
         <Route path="/movie" method="movie"/>
         <Route path="/sidebar" method="sidebar"/>
         <Route path="/single" method="single"/>
         <Route path="/react" method="react"/>
     </Router>
+    <Router path="server/router/demo/article.js" prefix="/article" type="get">
+        <Route path="/" method="article"/>
+    </Router>
     <Router path="server/router/demo/es6.js" prefix="/es6" type="get" use="false">
     </Router>
     <Router path="server/router/demo/server.js" prefix="/server">
         <Route path="/" method="hello"/>
+    </Router>
+    <Router path="server/router/bootstrap.js" prefix="/bootstrap" type="get">
         <Route path="/pager" method="pager"/>
     </Router>
     <Router path="server/router/index.js" type="get">

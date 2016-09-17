@@ -53,7 +53,7 @@ fis.match('/{client/public,client/views}/(**){.jsx,:jsx}', {
 });
 
 //编译所有后缀为 jsx 的文件为 js
-fis.match('/client/views/widget/{hello/*,pager/*,menu/*}{.jsx,:jsx}', {
+fis.match('/client/views/widget/(**){.jsx,:jsx}', {
     useRequireReplace:false
 });
 

@@ -5,9 +5,10 @@
  * Copyright (c) 2016 sky All Rights Reserved
  */
 const router = require('koa-router')();
+const layout = 'bootstrap';
 
-exports.hello = function* () {
-  const reactHtml = yield this.renderReactComponent('demo/hello', { name: "sky" });
+exports.pager = function* () {
+  const reactHtml = yield this.renderReactComponent('bootstrap/pager', {});
   this.app.logger.debug(reactHtml);
-  yield this.render('demo/server/hello', { reactHtml: reactHtml });
+  yield this.render('bootstrap/pager', { layout, reactHtml });
 }

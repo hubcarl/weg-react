@@ -10,9 +10,9 @@ module.exports = function (options, app) {
 
     swig.middleware(options);
 
-    app.context.render = render(options);
-    app.context.renderView = renderView(options);
-    app.context.renderComponent = renderComponent(options);
+    app.context.render = render(options, app);
+    app.context.renderView = renderView(options, app);
+    app.context.renderReactComponent = renderReactComponent(options, app);
 
     return function *swigMiddleware(next) {
         var pagelets = this.query['_pagelets'];
@@ -27,10 +27,11 @@ module.exports = function (options, app) {
 };
 
 
-function renderComponent(options) {
-    return function *renderComponent(name, data) {
-        var filePath = path.join(options.root, 'client/public/widget', name, name+'.js');
-        //console.log('--renderComponent filePath', filePath);
+function renderReactComponent(options, app) {
+    return function *renderReactComponent(name, data) {
+        var arr = name.split('/');
+        var filePath = path.join(options.root, 'client/public/widget', name, arr[arr.length-1]+'.js');
+        app.logger.debug('renderReactComponent file:', filePath);
         var component = require(filePath);
         // createFactory arguments:string/ReactClass type
         var componentFactory = React.createFactory(component)(data);
@@ -40,19 +41,21 @@ function renderComponent(options) {
 }
 
 
-function render(options) {
+function render(options, app) {
     return function *render(page, locals) {
         var layout = locals.layout || options.layout;
         var fakePath = path.join(options.view, page.replace(/\//g, '_').replace(/\.html$/, '') + '.html');
         var source = `{% extends 'layout/${layout}.html' %} {% block content %} {% require $id='/page/${page}' %} {% endblock %}`;
         var compiled = swig.compile(source, {filename: fakePath});
+        Object.assign(locals, app.locals);
         this.body = compiled(locals);
     }
 }
 
-function renderView(options) {
+function renderView(options, app) {
     function renderFile(pathName, locals) {
         return function (done) {
+            Object.assign(locals, app.locals);
             swig.renderFile(pathName, locals, done);
         };
     }
@@ -68,9 +71,7 @@ function renderView(options) {
 
         view = path.resolve(options.view, view);
 
-        var data = merge(this.state, {flash: this.flash}, locals);
-
-        this.body = yield renderFile(view, data);
+        this.body = yield renderFile(view, locals);
 
     }
 }

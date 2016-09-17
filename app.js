@@ -24,6 +24,7 @@ const app = koa();
 const ready = require('ready-callback')();
 ready.mixin(app);
 
+app.locals = { title: 'weg-react'};
 app.logger = app.context.logger = logger.getLogger('debug');
 
 app.use(koaLogger());
@@ -52,7 +53,7 @@ app.ready(function(){
   const args = process.argv.join('|');
   const port = /\-\-port\|(\d+)(?:\||$)/.test(args) ? ~~RegExp.$1 : 9999;
   app.listen(port, function () {
-    app.logger.info('The server is runing on port:' + port);
+    app.logger.info('The server is running on port:' + port);
   });
 });
 

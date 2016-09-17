@@ -1,1 +1,1 @@
-require('client/views/widget/hello');
+require('client/views/widget/demp/hello');
