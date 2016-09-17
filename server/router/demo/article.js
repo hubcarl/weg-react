@@ -8,7 +8,8 @@ const articleModel = require('../../model/article');
 const layout = 'bootstrap';
 
 exports.article = function* article() {
-  var list = yield articleModel.query(1, 20);
-  this.logger.debug('list size:', list.length);
-  yield this.render('demo/article', { layout, list });
+  const list = yield articleModel.query(1, 20);
+  const reactHtml = yield this.renderReactComponent('demo/article/menu', { list });
+  this.app.logger.debug(reactHtml);
+  yield this.render('demo/article', { layout, list, reactHtml });
 }

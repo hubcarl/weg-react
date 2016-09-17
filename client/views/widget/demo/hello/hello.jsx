@@ -10,6 +10,7 @@ var HelloMessage = React.createClass({
         return <div onClick={this.handleClick}>Hello {this.props.name}</div>
     }
 });
+
 if (typeof define == 'function') {
     ReactDOM.render(<HelloMessage name="sky"/>, document.getElementById('hello'));
 } else {

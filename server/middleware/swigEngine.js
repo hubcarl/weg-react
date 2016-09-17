@@ -30,7 +30,7 @@ module.exports = function (options, app) {
 function renderReactComponent(options, app) {
     return function *renderReactComponent(name, data) {
         var arr = name.split('/');
-        var filePath = path.join(options.root, 'client/public/widget', name, arr[arr.length-1]+'.js');
+        var filePath = path.join(options.root, 'client/views/widget', name, arr[arr.length-1]+'.js');
         app.logger.debug('renderReactComponent file:', filePath);
         var component = require(filePath);
         // createFactory arguments:string/ReactClass type

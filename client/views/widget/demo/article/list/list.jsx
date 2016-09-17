@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import ReactDom from 'react-dom'
 
 
-class List extends Component{
+export default class List extends Component{
 
   constructor(props){
     super(props);
@@ -15,7 +15,7 @@ class List extends Component{
   render(){
 
     const articleList = this.state.list.map(function (item) {
-      return <li key={item.id}><a href="#">{item.name}</a></li>
+      return <li key={item.id}><a href="#">{item.title}</a></li>
     })
 
     return (
@@ -26,5 +26,3 @@ class List extends Component{
   }
 
 }
-
-export default List

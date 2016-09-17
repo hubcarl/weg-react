@@ -13,7 +13,6 @@ const sstatic = require('koa-static');
 const parser = require('koa-bodyparser');
 const koaLogger = require('koa-logger');
 const swigEngine = require('./server/middleware/swigEngine');
-const reactEngine = require('./server/middleware/reactEngine');
 //const router = require('./server/middleware/router');
 const routerMapping = require('./server/middleware/routerMapping');
 const logger = require('./server/utils/log4js').configure(root);
@@ -43,7 +42,6 @@ app.use(swigEngine({
   }
 }, app));
 
-app.use(reactEngine({ root }, app));
 app.use(routerMapping(app, { root }));
 app.on('error', error => {
   app.logger.error(error);

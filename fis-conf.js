@@ -40,7 +40,7 @@ fis.match('/server/**.**',{
 });
 
 // 编译所有后缀为 jsx 的文件为 js
-fis.match('/{client/public,client/views}/(**){.jsx,:jsx}', {
+fis.match('/client/(**){.jsx,:jsx}', {
     parser: fis.plugin('babel-5.x', {
         sourceMaps: false
     }),
@@ -48,8 +48,8 @@ fis.match('/{client/public,client/views}/(**){.jsx,:jsx}', {
     isMod:true,
     useMap:true,
     useCache:false,
-    url:'/public/$1',
-    release: '/client/public/$1'
+    url:'/$1',
+    release: '/client/$1'
 });
 
 //编译所有后缀为 jsx 的文件为 js
@@ -67,41 +67,37 @@ fis.match('/client/**.{js,css,png,jpg,gif}', {
     useHash:true
 });
 
-fis.match('/client/**.js', {
-    isMod:true
-});
-
-
-fis.match('/client/**.{js,css}', {
-    useMap:true
-});
-
 // 同名组件依赖
 fis.match('/client/views/**.{html,js,css}', {
     useSameNameRequire: true
 });
 
 
-fis.match('/client/views/(**).{gif,png,js,css}', {
-    url:'/public/$1',
-    release: '/client/public/$1'
+fis.match('/client/(**).{gif,png,jpg}', {
+    url:'/$1',
+    release: '/client/$1'
 });
 
 // 公共静态资源
-fis.match('/{client/public, client/views}/(**).js', {
-    url:'/public/$1',
+fis.match('/client/(**).js', {
+    useMap:true,
+    isMod:true,
+    url:'/$1',
+    release: '/client/$1',
     // fis-optimizer-uglify-js 插件进行压缩，已内置
     optimizer: fis.plugin('uglify-js')
 });
 
-fis.match('/{client/public, client/views}/(**).css', {
+fis.match('/client/{public,views}/(**).css', {
     url:'/public/$1',
+    release: '/client/public/$1',
     // fis-optimizer-clean-css 插件进行压缩，已内置
     optimizer: fis.plugin('clean-css')
 });
 
-fis.match('/{client/public, client/views}/(**).png', {
-    url:'/public/$1',
+fis.match('/client/(**).png', {
+    url:'/$1',
+    release: '/client/$1',
     // fis-optimizer-png-compressor 插件进行压缩，已内置
     optimizer: fis.plugin('png-compressor')
 });
